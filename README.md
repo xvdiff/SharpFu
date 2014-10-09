@@ -7,7 +7,7 @@ of DDD (domain driven design) and CQRS (command query responsibility segregation
 strict SOLID principles in order to guarante your solution stays testable, maintainable, extensible 
 and focues on your customers need - and not on the quirks of a certain infrastructure framework.
 
-### Patterns
+### Features
 
 * Repositories
 * Specifications
@@ -15,26 +15,32 @@ and focues on your customers need - and not on the quirks of a certain infrastru
 * Event & command aggregators (messaging)
 * Entity auditing
 * Unit of Work
-
-### Techniques
-
 * Identity conventions
 * Caching
+* Caching strategies
 * Traits
-
-### Business elements
-
 * Aggregate roots
 * Entities
 * Value Objects
 * Services (e.g. identifier generators)
-
-### Utilities
-
 * Guarding
 * FastActivator
 * Many extension methods!
 * Expression composing & combining
+* ... & much more!
+
+### Adapters
+
+* Persistence
+	* NHibernate (rhino)
+	* db4o embedded
+	* MongoDb
+	* Entity Framework
+	* InMemory
+	
+* Caching
+	* Windows Azure
+	* ASP.NET HTTP
 
 ## Help out!
 
