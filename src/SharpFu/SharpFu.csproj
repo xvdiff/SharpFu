@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B2D4B1A6-5E50-4D67-B77E-A4677C8EC5F8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SharpFu</RootNamespace>
+    <AssemblyName>SharpFu</AssemblyName>
+    <DefaultLanguage>de-DE</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <DocumentationFile>bin\SharpFu.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS;NET45, NET_45_OR_GREATER</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <OutputPath>bin\Debug\</OutputPath>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE;CODE_ANALYSIS;NET45, NET_45_OR_GREATER</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>SharpFu.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <Target Name="Shared">
+    <ItemGroup />
+  </Target>
+  <ItemGroup>
+    <Compile Include="..\SharpFu.Metadata\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Caching\CacheProviderBase.cs" />
+    <Compile Include="Caching\IAsyncCacheProvider.cs" />
+    <Compile Include="Caching\ICacheProvider.cs" />
+    <Compile Include="Caching\InMemoryAsyncCacheProvider.cs" />
+    <Compile Include="Caching\InMemoryCacheProvider.cs" />
+    <Compile Include="Caching\NullAsyncCacheProvider.cs" />
+    <Compile Include="Caching\NullCacheProvider.cs" />
+    <Compile Include="Core\Guarding\Guard.cs" />
+    <Compile Include="Core\Internal\Constants.cs" />
+    <Compile Include="Core\Internal\FastActivator.cs" />
+    <Compile Include="Core\Internal\IFluentInterface.cs" />
+    <Compile Include="Core\ObjectBase.cs" />
+    <Compile Include="Domain\Model\Auditing\IAudited.cs" />
+    <Compile Include="Domain\Model\Auditing\ICreationAudited.cs" />
+    <Compile Include="Domain\Model\Auditing\IDeletionAudited.cs" />
+    <Compile Include="Domain\Model\Auditing\IModificationAudited.cs" />
+    <Compile Include="Domain\Model\Conventions\DomainSignature.cs" />
+    <Compile Include="Domain\Model\Conventions\IdentityAttribute.cs" />
+    <Compile Include="Domain\Model\EntityBase.cs" />
+    <Compile Include="Domain\Model\Enumeration.cs" />
+    <Compile Include="Domain\Model\Equality\ObjectBaseEqualityComparer.cs" />
+    <Compile Include="Domain\Model\IAggregateRoot.cs" />
+    <Compile Include="Domain\Model\IArchivable.cs" />
+    <Compile Include="Domain\Model\IEntity.cs" />
+    <Compile Include="Domain\Model\IHasCreationTime.cs" />
+    <Compile Include="Domain\Model\IPersistable.cs" />
+    <Compile Include="Domain\Model\ValueObjectBase.cs" />
+    <Compile Include="Domain\Persistence\Caching\CachingStrategyBase.cs" />
+    <Compile Include="Domain\Persistence\Caching\ICachingStrategy.cs" />
+    <Compile Include="Domain\Persistence\Caching\NullCachingStrategy.cs" />
+    <Compile Include="Domain\Persistence\Caching\TimeoutCachingStrategy.cs" />
+    <Compile Include="Domain\Persistence\Configuration\Conventions\AffixIdentityConvention.cs" />
+    <Compile Include="Domain\Persistence\Configuration\Conventions\AttributeIdentityConvention.cs" />
+    <Compile Include="Domain\Persistence\Configuration\Conventions\BaseTypeIdentityConvention.cs" />
+    <Compile Include="Domain\Persistence\Configuration\Conventions\EqualsNameIdentityConvention.cs" />
+    <Compile Include="Domain\Persistence\Configuration\Conventions\IdentityAttributeConvention.cs" />
+    <Compile Include="Domain\Persistence\Configuration\Conventions\IIdentityConvention.cs" />
+    <Compile Include="Domain\Persistence\Configuration\Conventions\InterfaceIdentityConvention.cs" />
+    <Compile Include="Domain\Persistence\Configuration\Conventions\PropertyIdentityConventionBase.cs" />
+    <Compile Include="Domain\Persistence\Configuration\Conventions\NameIdentityConventionBase.cs" />
+    <Compile Include="Domain\Persistence\Configuration\Conventions\TypeEqualsIdentityConvention.cs" />
+    <Compile Include="Domain\Persistence\Configuration\Conventions\TypeIdentityConvention.cs" />
+    <Compile Include="Domain\Persistence\Configuration\DefaultEntityStoreConfiguration.cs" />
+    <Compile Include="Domain\Persistence\Configuration\GlobalEntityStoreConfiguration.cs" />
+    <Compile Include="Domain\Persistence\Configuration\IEntityStoreConfiguration.cs" />
+    <Compile Include="Domain\Persistence\DefaultEntityStoreFactory.cs" />
+    <Compile Include="Domain\Persistence\EntityStoreBase.cs" />
+    <Compile Include="Domain\Persistence\EntityStoreFactoryBase.cs" />
+    <Compile Include="Domain\Persistence\IEntityStore.cs" />
+    <Compile Include="Domain\Persistence\IEntityStoreFactory.cs" />
+    <Compile Include="Domain\Persistence\Repositories\CrudRepositoryBase.cs" />
+    <Compile Include="Domain\Persistence\Repositories\Exceptions\ConcurrencyException.cs" />
+    <Compile Include="Domain\Persistence\Repositories\Exceptions\EntityNotFoundException.cs" />
+    <Compile Include="Domain\Persistence\Repositories\Exceptions\RepositoryException.cs" />
+    <Compile Include="Domain\Persistence\Repositories\ICrudRepository.cs" />
+    <Compile Include="Domain\Persistence\Repositories\IQueryableRepository.cs" />
+    <Compile Include="Domain\Persistence\Repositories\IRepository.cs" />
+    <Compile Include="Domain\Persistence\Repositories\Queries\IPagingOptions.cs" />
+    <Compile Include="Domain\Persistence\Repositories\Queries\IQueryOptions.cs" />
+    <Compile Include="Domain\Persistence\Repositories\Queries\PagingOptions.cs" />
+    <Compile Include="Domain\Persistence\Repositories\Queries\SortingOptions.cs" />
+    <Compile Include="Domain\Persistence\EntityCacheManager.cs" />
+    <Compile Include="Domain\Persistence\Repositories\RepositoryBase.cs" />
+    <Compile Include="Domain\Persistence\Repositories\RepositoryBase.Specifications.cs" />
+    <Compile Include="Domain\Persistence\Specifications\AndAlsoSpecification.cs" />
+    <Compile Include="Domain\Persistence\Specifications\AndNotSpecification.cs" />
+    <Compile Include="Domain\Persistence\Specifications\AndSpecification.cs" />
+    <Compile Include="Domain\Persistence\Specifications\AnySpecification.cs" />
+    <Compile Include="Domain\Persistence\Specifications\CompositeSpecificationBase.cs" />
+    <Compile Include="Domain\Persistence\Specifications\ExclusiveOrSpecification.cs" />
+    <Compile Include="Domain\Persistence\Specifications\ExpressionSpecification.cs" />
+    <Compile Include="Domain\Persistence\Specifications\ICompositeSpecification.cs" />
+    <Compile Include="Domain\Persistence\Specifications\ISpecification.cs" />
+    <Compile Include="Domain\Persistence\Specifications\NoneSpecification.cs" />
+    <Compile Include="Domain\Persistence\Specifications\NotSpecification.cs" />
+    <Compile Include="Domain\Persistence\Specifications\OrElseSpecification.cs" />
+    <Compile Include="Domain\Persistence\Specifications\OrNotSpecification.cs" />
+    <Compile Include="Domain\Persistence\Specifications\OrSpecification.cs" />
+    <Compile Include="Domain\Persistence\Specifications\SpecificationBase.cs" />
+    <Compile Include="Domain\Persistence\Specifications\SpecificationExtensions.cs" />
+    <Compile Include="Domain\Persistence\Traits\Async\ICanAddAsync.cs" />
+    <Compile Include="Domain\Persistence\Traits\Async\ICanAddOrUpdateAsync.cs" />
+    <Compile Include="Domain\Persistence\Traits\Async\ICanAggregateAsyncByQuery.cs" />
+    <Compile Include="Domain\Persistence\Traits\Async\ICanDeleteAsync.cs" />
+    <Compile Include="Domain\Persistence\Traits\Async\ICanFindAsyncByQuery.cs" />
+    <Compile Include="Domain\Persistence\Traits\Async\ICanGetAsync.cs" />
+    <Compile Include="Domain\Persistence\Traits\Async\ICanUpdateAsync.cs" />
+    <Compile Include="Domain\Persistence\Traits\Crud\ICanAdd.cs" />
+    <Compile Include="Domain\Persistence\Traits\Crud\ICanAddOrUpdate.cs" />
+    <Compile Include="Domain\Persistence\Traits\Crud\ICanDelete.cs" />
+    <Compile Include="Domain\Persistence\Traits\Crud\ICanGet.cs" />
+    <Compile Include="Domain\Persistence\Traits\Crud\ICanUpdate.cs" />
+    <Compile Include="Domain\Persistence\Traits\ICanAggregate.cs" />
+    <Compile Include="Domain\Persistence\Traits\ICanAggregateByQuery.cs" />
+    <Compile Include="Domain\Persistence\Traits\ICanDeleteByQuery.cs" />
+    <Compile Include="Domain\Persistence\Traits\ICanFindByIdentity.cs" />
+    <Compile Include="Domain\Persistence\Traits\ICanFindByQuery.cs" />
+    <Compile Include="Domain\Persistence\Traits\ICanGetByQuery.cs" />
+    <Compile Include="Domain\Persistence\UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="Domain\Persistence\UnitOfWork\IUnitOfWorkFactory.cs" />
+    <Compile Include="Domain\Persistence\UnitOfWork\UnitOfWorkAttribute.cs" />
+    <Compile Include="Domain\Services\Identity\Ascii85IdentifierGenerator.cs" />
+    <Compile Include="Domain\Services\Identity\Base32IdentifierGenerator.cs" />
+    <Compile Include="Domain\Services\Identity\Base64IdentifierGenerator.cs" />
+    <Compile Include="Domain\Services\Identity\CombGuidGenerator.cs" />
+    <Compile Include="Domain\Services\Identity\GuidGenerator.cs" />
+    <Compile Include="Domain\Services\Identity\IIdentifierGenerator.cs" />
+    <Compile Include="Domain\Services\IGenericFactory.cs" />
+    <Compile Include="Extensions\CustomAttributeProviderExtensions.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\GenericExtensions.cs" />
+    <Compile Include="Extensions\ListExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs" />
+    <Compile Include="Linq\Expressions\ExpressionExtensions.cs" />
+    <Compile Include="Linq\Expressions\ParameterRebinderVisitor.cs" />
+    <Compile Include="Linq\Expressions\ParameterToMemberRebinderVisitor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SharpFu.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Logging\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
