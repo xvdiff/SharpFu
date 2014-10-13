@@ -7,8 +7,8 @@
     <ProjectGuid>{74FA1271-2074-4D27-AFE8-6CE2E66F646B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SharpFu.Caching.Providers.WindowsAzure</RootNamespace>
-    <AssemblyName>SharpFu.Caching.Providers.WindowsAzure</AssemblyName>
+    <RootNamespace>SharpFu.Caching.WindowsAzure</RootNamespace>
+    <AssemblyName>SharpFu.Caching.WindowsAzure</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -24,7 +24,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>bin\Debug\SharpFu.Caching.Providers.WindowsAzure.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\SharpFu.Caching.WindowsAzure.xml</DocumentationFile>
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -35,7 +35,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>bin\Release\SharpFu.Caching.Providers.WindowsAzure.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\SharpFu.Caching.WindowsAzure.xml</DocumentationFile>
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup>

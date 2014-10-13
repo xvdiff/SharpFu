@@ -10,34 +10,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project Files", "Project Fi
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpFu", "src\SharpFu\SharpFu.csproj", "{B2D4B1A6-5E50-4D67-B77E-A4677C8EC5F8}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00} = {5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpFu.Metadata", "src\SharpFu.Metadata\SharpFu.Metadata.csproj", "{5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpFu.Tests", "src\SharpFu.Tests\SharpFu.Tests.csproj", "{BC44794F-0E14-493A-8ED4-F92B399B7355}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00} = {5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00}
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{1C67C4C2-0AEF-4BA2-AA6F-9FE076186C27}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{3EA8DD93-8DD4-4345-A7B6-CC90784D9504}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpFu.Caching.Providers.AspNetHttpCache", "src\Infrastructure\Caching\Providers\AspNetHttpCache\SharpFu.Caching.Providers.AspNetHttpCache.csproj", "{821502C6-0989-4E00-9A66-A79AB05B85E1}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00} = {5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpFu.Caching.AspNetHttpCache", "src\Infrastructure\Caching\Providers\AspNetHttpCache\SharpFu.Caching.AspNetHttpCache.csproj", "{821502C6-0989-4E00-9A66-A79AB05B85E1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Caching", "Caching", "{1A7A22DD-2F27-4EFB-B3BF-9B798A1E5526}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Providers", "Providers", "{1024E486-3782-4D0A-9444-937A484974FA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpFu.Caching.Providers.WindowsAzure", "src\Infrastructure\Caching\Providers\WindowsAzure\SharpFu.Caching.Providers.WindowsAzure.csproj", "{74FA1271-2074-4D27-AFE8-6CE2E66F646B}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00} = {5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpFu.Caching.WindowsAzure", "src\Infrastructure\Caching\Providers\WindowsAzure\SharpFu.Caching.WindowsAzure.csproj", "{74FA1271-2074-4D27-AFE8-6CE2E66F646B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence", "{D5C16243-DEA3-41EE-BD51-74E8DEF36452}"
 EndProject
@@ -51,24 +35,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E7A19B
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpFu.Persistence.EntityFramework", "src\Infrastructure\Persistence\EntityFramework\SharpFu.Persistence.EntityFramework.csproj", "{1A6585FA-7E51-4E86-8716-F390619F26D3}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00} = {5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpFu.Persistence.InMemory", "src\Infrastructure\Persistence\InMemory\SharpFu.Persistence.InMemory.csproj", "{D37ECF90-CA91-4D28-B99D-BB001DEBCF0A}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00} = {5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpFu.Persistence.MongoDb", "src\Infrastructure\Persistence\MongoDb\SharpFu.Persistence.MongoDb.csproj", "{D5D35B4D-D824-40A4-8C3A-B42E80F522C4}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00} = {5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpFu.Persistence.Rhino", "src\Infrastructure\Persistence\Rhino\SharpFu.Persistence.Rhino.csproj", "{D3C66DE4-CEA5-4A76-ACD0-017D659A5DD3}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00} = {5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,16 +64,6 @@ Global
 		{B2D4B1A6-5E50-4D67-B77E-A4677C8EC5F8}.Release|ARM.ActiveCfg = Release|Any CPU
 		{B2D4B1A6-5E50-4D67-B77E-A4677C8EC5F8}.Release|x64.ActiveCfg = Release|Any CPU
 		{B2D4B1A6-5E50-4D67-B77E-A4677C8EC5F8}.Release|x86.ActiveCfg = Release|Any CPU
-		{5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00}.Release|ARM.ActiveCfg = Release|Any CPU
-		{5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00}.Release|x64.ActiveCfg = Release|Any CPU
-		{5FE6DFE1-4D7C-46A5-A699-7255C6FB5E00}.Release|x86.ActiveCfg = Release|Any CPU
 		{BC44794F-0E14-493A-8ED4-F92B399B7355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BC44794F-0E14-493A-8ED4-F92B399B7355}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC44794F-0E14-493A-8ED4-F92B399B7355}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -187,10 +149,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{821502C6-0989-4E00-9A66-A79AB05B85E1} = {1024E486-3782-4D0A-9444-937A484974FA}
+		{821502C6-0989-4E00-9A66-A79AB05B85E1} = {1A7A22DD-2F27-4EFB-B3BF-9B798A1E5526}
 		{1A7A22DD-2F27-4EFB-B3BF-9B798A1E5526} = {3EA8DD93-8DD4-4345-A7B6-CC90784D9504}
-		{1024E486-3782-4D0A-9444-937A484974FA} = {1A7A22DD-2F27-4EFB-B3BF-9B798A1E5526}
-		{74FA1271-2074-4D27-AFE8-6CE2E66F646B} = {1024E486-3782-4D0A-9444-937A484974FA}
+		{74FA1271-2074-4D27-AFE8-6CE2E66F646B} = {1A7A22DD-2F27-4EFB-B3BF-9B798A1E5526}
 		{D5C16243-DEA3-41EE-BD51-74E8DEF36452} = {3EA8DD93-8DD4-4345-A7B6-CC90784D9504}
 		{00B4B85D-DBA6-4876-8F80-E5EC42C31019} = {D5C16243-DEA3-41EE-BD51-74E8DEF36452}
 		{1A6585FA-7E51-4E86-8716-F390619F26D3} = {D5C16243-DEA3-41EE-BD51-74E8DEF36452}
