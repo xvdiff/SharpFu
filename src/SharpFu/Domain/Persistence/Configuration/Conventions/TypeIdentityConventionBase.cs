@@ -10,14 +10,22 @@ using SharpFu.Linq.Expressions;
 
 namespace SharpFu.Domain.Persistence.Configuration.Conventions
 {
-	public abstract class TypeIdentityConvention<T, TProperty> : IIdentityConvention
+
+	/// <summary>
+	///		Identity selector convention base class
+	///		for type conditions
+	/// </summary>
+	public abstract class TypeIdentityConventionBase<T, TProperty> : IIdentityConvention
 		where T: class 
 	{
 
 		private readonly Func<Type, bool> _condition;
 		private readonly Expression<Func<T, TProperty>> _selector;
 
-		protected TypeIdentityConvention(Func<Type, bool> condition, Expression<Func<T, TProperty>> selector)
+		/// <summary>
+		///		Creates a new instance of a <see cref="TypeIdentityConventionBase{T,TProperty}"/>
+		/// </summary>
+		protected TypeIdentityConventionBase(Func<Type, bool> condition, Expression<Func<T, TProperty>> selector)
 		{
 			Guard.AgainstNullArgument(condition);
 			Guard.AgainstNullArgument(selector);
@@ -25,9 +33,20 @@ namespace SharpFu.Domain.Persistence.Configuration.Conventions
 			_selector = selector;
 		}
 
+		/// <summary>
+		///		Evaluates if the convention can be applied
+		///		on certain entity/identity types
+		/// </summary>
 		public bool CanApplyOn(Type entityType, Type identityType)
 		{
-			return entityType == typeof(T) && identityType == typeof(TProperty);
+			return 
+				(entityType == typeof(T) 
+					|| entityType.Implements(entityType) 
+					|| entityType.InheritsFrom(entityType))
+				 && 
+				 (identityType == typeof(TProperty) 
+					|| identityType.Implements(identityType) 
+					|| identityType.InheritsFrom(identityType));
 		}
 		
 		public Expression<Func<TEntity, TIdentity>> Apply<TEntity, TIdentity>()

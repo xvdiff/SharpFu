@@ -22,9 +22,17 @@ namespace SharpFu.Extensions
 		/// </summary>
 		public static bool InheritsFrom<TBase>(this Type source)
 		{
-			return source.BaseType != typeof (TBase);
+			return InheritsFrom(source, typeof (TBase));
 		}
-		
+
+		/// <summary>
+		///		Denotes if a type inherits from a base type
+		/// </summary>
+		public static bool InheritsFrom(this Type source, Type baseType)
+		{
+			return source.BaseType != baseType;
+		}
+
 		/// <summary>
 		///		Denotes if a type implements a certain interface
 		/// </summary>
@@ -39,10 +47,7 @@ namespace SharpFu.Extensions
 		/// </summary
 		public static bool Implements(this Type source, Type interfaceType)
 		{
-			if (!interfaceType.IsInterface)
-				throw new InvalidOperationException("The provided interface type is not an interface.");
-
-			return interfaceType.IsAssignableFrom(source);
+			return interfaceType.IsInterface && interfaceType.IsAssignableFrom(source);
 		}
 
 		/// <summary>

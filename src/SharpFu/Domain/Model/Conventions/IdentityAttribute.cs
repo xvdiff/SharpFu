@@ -13,6 +13,6 @@ namespace SharpFu.Domain.Model.Conventions
 	[AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
 	public class IdentityAttribute : Attribute
 	{
-		/*public int Order { get; set; }*/
+	
 	}
 }

@@ -11,7 +11,7 @@ namespace SharpFu.Domain.Persistence.Configuration.Conventions
 	/// <summary>
 	///		Identity convention for entity types
 	/// </summary>
-	public class TypeEqualsIdentityConvention<TType, TEntity, TIdentity> : TypeIdentityConvention<TEntity, TIdentity>
+	public class TypeEqualsIdentityConvention<TType, TEntity, TIdentity> : TypeIdentityConventionBase<TEntity, TIdentity>
 		where TEntity : class
 	{
 
