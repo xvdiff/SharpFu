@@ -8,7 +8,7 @@ using SharpFu.Core.Guarding;
 
 namespace SharpFu.Linq.Expressions
 {
-	public class ParameterToMemberRebinderVisitor : ExpressionVisitor
+	internal class ParameterToMemberRebinderVisitor : ExpressionVisitor
 	{
 
 		private readonly ParameterExpression _parameterExpression;

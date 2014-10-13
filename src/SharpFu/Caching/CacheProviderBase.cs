@@ -96,9 +96,35 @@ namespace SharpFu.Caching
 			}
 		}
 
+		/// <summary>
+		///		Returns an item from the cache
+		/// </summary>
+		/// <typeparam name="T">Arbitary item type</typeparam>
+		/// <param name="key">Cache item key</param>
 		protected abstract T GetValue<T>(string key);
+
+		/// <summary>
+		///		Removes an item from the cache
+		/// </summary>
+		/// <param name="key">Cache item key</param>
 		protected abstract void RemoveValue(string key);
+
+		/// <summary>
+		///		Inserts a new item into the cache
+		/// </summary>
+		/// <typeparam name="T">Arbitary item type</typeparam>
+		/// <param name="key">Cache item key</param>
+		/// <param name="value">Cache item value</param>
+		/// <param name="lifespan">Optional lifespace</param>
 		protected abstract void InsertValue<T>(string key, T value, TimeSpan? lifespan = null);
-		protected abstract void Dispose(bool disposing);
+
+		/// <summary>
+		///		Disposes the cache provider
+		/// </summary>
+		protected virtual void Dispose(bool disposing)
+		{
+			
+		}
+
 	}
 }

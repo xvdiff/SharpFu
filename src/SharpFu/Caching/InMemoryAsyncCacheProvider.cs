@@ -28,6 +28,9 @@ namespace SharpFu.Caching
 			return Task.Run(() => ClearAsync(key));
 		}
 
+		/// <summary>
+		///		Disposes the cache provider
+		/// </summary>
 		protected override void Dispose(bool disposing)
 		{
 			// do nothing

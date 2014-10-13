@@ -7,11 +7,19 @@ using SharpFu.Core.Guarding;
 
 namespace SharpFu.Extensions
 {
+
+	/// <summary>
+	///		Extension methods for <see cref="List{T}"/>
+	/// </summary>
 	public static class ListExtensions
 	{
-		public static List<T> Clone<T>(this List<T> source)
+
+		/// <summary>
+		///		Creates a new <see cref="List{T}"/> based on the
+		///		values of a current one
+		/// </summary>
+		public static List<T> Clone<T>(this ICollection<T> source)
 		{
-			Guard.AgainstNullArgument(source, "source");
 			return new List<T>(source);
 		}
 	}

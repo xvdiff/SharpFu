@@ -15,10 +15,19 @@ using SharpFu.Core.Guarding;
 
 namespace SharpFu.Caching
 {
+
+	/// <summary>
+	///		Chache provider which persists items
+	///		in a memory store
+	/// </summary>
 	public class InMemoryCacheProvider : CacheProviderBase
 	{
 		private readonly string _regionName;
 
+		/// <summary>
+		///		Creates a new instance of a <see cref="InMemoryCacheProvider"/>
+		/// </summary>
+		/// <param name="regionName">Optional cache region name</param>
 		public InMemoryCacheProvider(string regionName = null)
 		{
 			_regionName = regionName;
@@ -63,6 +72,9 @@ namespace SharpFu.Caching
 			InternalCache.Set(key, value, policy);
 		}
 
+		/// <summary>
+		///		Disposes the cache provider
+		/// </summary>
 		protected override void Dispose(bool disposing)
 		{
 			// do nothing
