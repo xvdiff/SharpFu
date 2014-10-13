@@ -11,26 +11,41 @@ using SharpFu.Extensions;
 
 namespace SharpFu.Domain.Model
 {
-	public abstract class EntityBase<TKey> : ObjectBase, IEntity<TKey>,
-		IEquatable<EntityBase<TKey>>
+
+	/// <summary>
+	///		Base class for domain entities
+	///		with identity equality operations
+	/// </summary>
+	/// <typeparam name="TIdentity">Identity type</typeparam>
+	public abstract class EntityBase<TIdentity> : ObjectBase, IEntity<TIdentity>,
+		IEquatable<EntityBase<TIdentity>>
 	{
 		private int? _cachedHashCode;
 
-		// virtual to allow NHibernate-backed objects to be lazily loaded
-		[Identity]
-		public virtual TKey Id { get; protected set; }
 
+		
+		/// <summary>
+		///		Denotes the identity of the domain
+		///		entity
+		/// </summary>
+		[Identity]
+		// virtual to allow NHibernate-backed objects to be lazily loaded
+		public virtual TIdentity Id { get; protected set; }
+
+		/// <summary>
+		///		Denotes if the entity is currently transient
+		/// </summary>
 		public bool IsTransient
 		{
-			get { return EqualityComparer<TKey>.Default.Equals(Id, default(TKey)); }
+			get { return EqualityComparer<TIdentity>.Default.Equals(Id, default(TIdentity)); }
 		}
 
-		public bool Equals(IEntity<TKey> other)
+		public bool Equals(IEntity<TIdentity> other)
 		{
-			return Equals(other as EntityBase<TKey>);
+			return Equals(other as EntityBase<TIdentity>);
 		}
 
-		public bool Equals(EntityBase<TKey> other)
+		public bool Equals(EntityBase<TIdentity> other)
 		{
 			if (ReferenceEquals(this, other))
 				return true;
@@ -44,7 +59,7 @@ namespace SharpFu.Domain.Model
 
 		public override bool Equals(object obj)
 		{
-			var other = obj as EntityBase<TKey>;
+			var other = obj as EntityBase<TIdentity>;
 			return Equals(other);
 		}
 
@@ -70,13 +85,13 @@ namespace SharpFu.Domain.Model
 			return _cachedHashCode.Value;
 		}
 
-		protected override IEnumerable<PropertyInfo> GetTypProperties()
+		protected override IEnumerable<PropertyInfo> GetTypeProperties()
 		{
 			return GetType().GetProperties().Where(
 				x => x.HasAttribute<DomainSignatureAttribute>());
 		}
 
-		private bool HasSameNonDefaultIdAs(IEntity<TKey> other)
+		private bool HasSameNonDefaultIdAs(IEntity<TIdentity> other)
 		{
 			return !IsTransient && !other.IsTransient && Id.Equals(other.Id);
 		}

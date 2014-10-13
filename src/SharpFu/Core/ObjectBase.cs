@@ -93,7 +93,7 @@ namespace SharpFu.Core
 				return properties;
 			}
 
-			return _signaturePropertyCache[GetType()] = GetTypProperties()
+			return _signaturePropertyCache[GetType()] = GetTypeProperties()
 				.Where(x => x != null && !x.GetIndexParameters().Any());
 		}
 
@@ -150,7 +150,7 @@ namespace SharpFu.Core
 		/// <summary>
 		///		Returns the properties of the current type
 		/// </summary>
-		protected virtual IEnumerable<PropertyInfo> GetTypProperties()
+		protected virtual IEnumerable<PropertyInfo> GetTypeProperties()
 		{
 			return UnproxiedType.GetProperties();
 		}

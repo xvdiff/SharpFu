@@ -18,6 +18,10 @@ namespace SharpFu.Domain.Model
 	{
 	}
 
+	/// <summary>
+	///		Denotes an aggregate root with
+	///		integer identity
+	/// </summary>
 	public interface IAggregateRoot : IAggregateRoot<int>
 	{
 	}

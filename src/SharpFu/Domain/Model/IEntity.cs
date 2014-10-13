@@ -23,6 +23,10 @@ namespace SharpFu.Domain.Model
 		TKey Id { get; }
 	}
 
+	/// <summary>
+	///		Denotes an entity with integer
+	///		identity
+	/// </summary>
 	public interface IEntity : IEntity<int>
 	{
 	}

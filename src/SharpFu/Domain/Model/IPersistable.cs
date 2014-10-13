@@ -14,8 +14,7 @@ namespace SharpFu.Domain.Model
 	{
 
 		/// <summary>
-		///		Returns true if the item
-		///		is currently transient
+		///		Returns true if the item is currently transient
 		/// </summary>
 		bool IsTransient { get; }
 	}

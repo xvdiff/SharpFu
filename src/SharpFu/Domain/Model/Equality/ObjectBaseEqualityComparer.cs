@@ -10,7 +10,7 @@ namespace SharpFu.Domain.Model.Equality
 	/// <summary>
 	///     Provides a comparer for supporting LINQ methods such as Intersect, Union and Distinct.
 	///     This may be used for comparing objects of type <see cref="ObjectBase" /> and anything
-	///     that derives from it, such as <see cref="EntityBase{TKey}" /> and <see cref="ValueObjectBase" />.
+	///     that derives from it, such as <see cref="EntityBase{TIdentity}" /> and <see cref="ValueObjectBase" />.
 	///     NOTE:  Microsoft decided that set operators such as Intersect, Union and Distinct should
 	///     not use the IEqualityComparer's Equals() method when comparing objects, but should instead
 	///     use IEqualityComparer's GetHashCode() method.

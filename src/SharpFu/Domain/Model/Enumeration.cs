@@ -12,16 +12,27 @@ using SharpFu.Extensions;
 
 namespace SharpFu.Domain.Model
 {
+
+	/// <summary>
+	///		Friendly named enumeration
+	/// </summary>
+	/// <typeparam name="T">Enumeration value type</typeparam>
 	public abstract class FriendlyNamedEnumeration<T> : EnumerationBase<T>
 	{
 		private readonly string _displayName;
 
+		/// <summary>
+		///		Creates a new instance of a <see cref="FriendlyNamedEnumeration{T}"/>
+		/// </summary>
 		protected FriendlyNamedEnumeration(T value, string displayName)
 			: base(value)
 		{
 			_displayName = displayName;
 		}
 
+		/// <summary>
+		///		Returns the enumeration display name
+		/// </summary>
 		protected string DisplayName
 		{
 			get { return _displayName; }
@@ -33,8 +44,15 @@ namespace SharpFu.Domain.Model
 		}
 	}
 
-	public abstract class Enumeration : EnumerationBase<int>, IComparable
+	/// <summary>
+	///		Integer based enumeration class
+	/// </summary>
+	public class Enumeration : EnumerationBase<int>, IComparable
 	{
+
+		/// <summary>
+		///		Creates a new instance of a <see cref="Enumeration"/>
+		/// </summary>
 		protected Enumeration(int value)
 			: base(value)
 		{
@@ -45,23 +63,37 @@ namespace SharpFu.Domain.Model
 			return Value.CompareTo(((Enumeration) obj).Value);
 		}
 
+		/// <summary>
+		///		Calculates the absolute difference between
+		///		two integer based enumerations
+		/// </summary>
 		public static int AbsoluteDifference(Enumeration firstValue, Enumeration secondValue)
 		{
 			return Math.Abs(firstValue.Value - secondValue.Value);
 		}
 	}
 
+	/// <summary>
+	///		Base class for class enumerations
+	/// </summary>
+	/// <typeparam name="T">Enumeration value type</typeparam>
 	[Serializable, ComVisible(true)]
 	public abstract class EnumerationBase<T> : ValueObjectBase,
 		IEquatable<EnumerationBase<T>>
 	{
 		private readonly T _value;
 
+		/// <summary>
+		///		Creates a new instance of <see cref="EnumerationBase{T}"/>
+		/// </summary>
 		protected EnumerationBase(T value)
 		{
 			_value = value;
 		}
 
+		/// <summary>
+		///		Returns the value of the current enumeration
+		/// </summary>
 		[DomainSignature]
 		protected T Value
 		{
@@ -84,6 +116,9 @@ namespace SharpFu.Domain.Model
 			return _value.ToString();
 		}
 
+		/// <summary>
+		///		Returns all values of the enumeration
+		/// </summary>
 		public static IEnumerable<TEnum> GetAll<TEnum>()
 			where TEnum : EnumerationBase<T>
 		{
@@ -93,6 +128,9 @@ namespace SharpFu.Domain.Model
 			return fields.Select(x => x.GetValue(null)).Cast<TEnum>();
 		}
 
+		/// <summary>
+		///		Parses a value to a corresponding enumeration
+		/// </summary>
 		public static TEnum Parse<TEnum>(T value)
 			where TEnum : EnumerationBase<T>
 		{
@@ -116,10 +154,5 @@ namespace SharpFu.Domain.Model
 			return _value.GetHashCode();
 		}
 
-		protected override IEnumerable<PropertyInfo> GetTypProperties()
-		{
-			return GetType().GetProperties().Where(
-				x => x.HasAttribute<DomainSignatureAttribute>());
-		}
 	}
 }
