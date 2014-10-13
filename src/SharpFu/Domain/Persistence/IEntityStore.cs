@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
 using SharpFu.Domain.Persistence.Caching;
-using SharpFu.Domain.Persistence.Configuration;
 using SharpFu.Domain.Persistence.Traits.Crud;
 
 namespace SharpFu.Domain.Persistence

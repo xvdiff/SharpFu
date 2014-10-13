@@ -8,6 +8,10 @@ using SharpFu.Domain.Persistence.Configuration.Conventions;
 
 namespace SharpFu.Domain.Persistence.Configuration
 {
+
+	/// <summary>
+	///		Default entity store configuration
+	/// </summary>
 	public class DefaultEntityStoreConfiguration<TEntity, TIdentity> : IEntityStoreConfiguration<TEntity, TIdentity>
 		where TEntity : class
 	{
@@ -15,11 +19,17 @@ namespace SharpFu.Domain.Persistence.Configuration
 		private readonly List<IIdentityConvention> _identityConventions
 			= GlobalEntityStoreConfiguration.DefaultConventions;
 
+		/// <summary>
+		///		Returns the default identity conventions
+		/// </summary>
 		public List<IIdentityConvention> IdentityConventions
 		{
 			get { return _identityConventions; }
 		}
 
+		/// <summary>
+		///		Returns the default caching strategy
+		/// </summary>
 		public ICachingStrategy<TEntity, TIdentity> CachingStrategy { get; set; }
 	}
 }

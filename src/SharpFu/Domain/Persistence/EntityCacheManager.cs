@@ -12,29 +12,49 @@ using SharpFu.Domain.Persistence.Specifications;
 
 namespace SharpFu.Domain.Persistence
 {
+
+	/// <summary>
+	///		Middleware between the caching strategy and
+	///		a persistence layer query
+	/// </summary>
 	public class EntityCacheManager<TEntity, TIdentity>
 		where TEntity : class
 	{
 		private readonly ICachingStrategy<TEntity, TIdentity> _cachingStrategy;
 
+		/// <summary>
+		///		Creates a new instance of a <see cref="EntityCacheManager{TEntity,TIdentity}"/>
+		/// </summary>
 		public EntityCacheManager(ICachingStrategy<TEntity, TIdentity> cachingStrategy)
 		{
 			CacheUsed			= false;
 			_cachingStrategy	= cachingStrategy;
 		}
 
+		/// <summary>
+		///		Denotes if the cache has been used
+		/// </summary>
 		public bool CacheUsed { get; private set; }
 
+		/// <summary>
+		///		Denotes if the cache is currently enabled
+		/// </summary>
 		public bool CacheEnabled
 		{
 			get { return _cachingStrategy != null; }
 		}
 
+		/// <summary>
+		///		Returns the current caching strategy
+		/// </summary>
 		public ICachingStrategy<TEntity, TIdentity> CachingStrategy
 		{
 			get { return _cachingStrategy; }
 		} 
 
+		/// <summary>
+		///		Executes a get query
+		/// </summary>
 		public TEntity ExecuteGet(Func<TEntity> query, TIdentity key)
 		{
 			TEntity result;
@@ -53,6 +73,9 @@ namespace SharpFu.Domain.Persistence
 			return result;
 		}
 
+		/// <summary>
+		///		Executes a get all query
+		/// </summary>
 		public IEnumerable<TResult> ExecuteGetAll<TResult>(Func<IEnumerable<TResult>> query,
 			Expression<Func<TEntity, TResult>> selector, IQueryOptions<TEntity> queryOptions)
 		{
@@ -72,6 +95,9 @@ namespace SharpFu.Domain.Persistence
 			return executeGetAll;
 		}
 
+		/// <summary>
+		///		Executes a find all query
+		/// </summary>
 		public IEnumerable<TResult> ExecuteFindAll<TResult>(Func<IEnumerable<TResult>> query, ISpecification<TEntity> criteria,
 			Expression<Func<TEntity, TResult>> selector, IQueryOptions<TEntity> queryOptions)
 		{
@@ -91,6 +117,9 @@ namespace SharpFu.Domain.Persistence
 			return executeFindAll;
 		}
 
+		/// <summary>
+		///		Executes a find query
+		/// </summary>
 		public TResult ExecuteFind<TResult>(Func<TResult> query, ISpecification<TEntity> criteria,
 			Expression<Func<TEntity, TResult>> selector, IQueryOptions<TEntity> queryOptions)
 		{
@@ -109,24 +138,36 @@ namespace SharpFu.Domain.Persistence
 			return result;
 		}
 
+		/// <summary>
+		///		Called when an entity has been added
+		/// </summary>
 		public void OnEntityAdded(TIdentity identity, TEntity entity)
 		{
 			if(CacheEnabled)
 				_cachingStrategy.Add(identity, entity);
 		}
 
+		/// <summary>
+		///		Called when an entity has been added or updated
+		/// </summary>
 		public void OnEntityAddedOrUpdated(TIdentity identity, TEntity entity)
 		{
 			if (CacheEnabled)
 				_cachingStrategy.AddOrUpdate(identity, entity);
 		}
 
+		/// <summary>
+		///		Called when an entity has been updated
+		/// </summary>
 		public void OnEntityUpdated(TIdentity identity, TEntity entity)
 		{
 			if (CacheEnabled)
 				_cachingStrategy.Update(identity, entity);
 		}
 
+		/// <summary>
+		///		Called when an entity has been deleted
+		/// </summary>
 		public void OnEntityDeleted(TIdentity identity)
 		{
 			if (CacheEnabled)
