@@ -12,20 +12,29 @@ namespace SharpFu.Core
 {
 	/// <summary>
 	///     Provides a standard base class for facilitating comparison of objects.
-	///     originally forked from
+	///     originally taken from
 	///     https://github.com/sharparchitecture/Sharp-Architecture/blob/master/Solutions/SharpArch.Domain/DomainModel/BaseObject.cs
 	/// </summary>
 	[Serializable]
 	public abstract class ObjectBase : IEquatable<ObjectBase>
 	{
+		
 		// http://www.dotnetjunkies.com/WebLog/chris.taylor/archive/2005/08/18/132026.aspx
 		[ThreadStatic] private static Dictionary<Type, IEnumerable<PropertyInfo>> _signaturePropertyCache;
 
+		/// <summary>
+		///		Returns the unproxied type of the
+		///		instance
+		/// </summary>
 		protected virtual Type UnproxiedType
 		{
 			get { return GetType(); }
 		}
 
+		/// <summary>
+		///		Returns the signature of the
+		///		instance
+		/// </summary>
 		protected IEnumerable<PropertyInfo> TypeSignature
 		{
 			get { return GetSignatureProperties(); }
@@ -84,10 +93,16 @@ namespace SharpFu.Core
 				return properties;
 			}
 
-			return _signaturePropertyCache[GetType()] = GetTypeSignature()
+			return _signaturePropertyCache[GetType()] = GetTypProperties()
 				.Where(x => x != null && !x.GetIndexParameters().Any());
 		}
 
+		/// <summary>
+		///		Denotes if this instance has an equal
+		///		signature than another instance of the
+		///		same type
+		/// </summary>
+		/// <param name="other">Instance to compare</param>
 		protected bool HasEqualSignatureAs(ObjectBase other)
 		{
 			var signatureProperties = GetSignatureProperties();
@@ -107,6 +122,11 @@ namespace SharpFu.Core
 			return infos.Any() || base.Equals(other);
 		}
 
+		/// <summary>
+		///		Equality operator for <see cref="ObjectBase"/>
+		/// </summary>
+		/// <param name="objectBase1">Left</param>
+		/// <param name="objectBase2">Right</param>
 		public static bool operator ==(ObjectBase objectBase1, ObjectBase objectBase2)
 		{
 			if ((object) objectBase1 == null)
@@ -117,12 +137,20 @@ namespace SharpFu.Core
 			return objectBase1.Equals(objectBase2);
 		}
 
+		/// <summary>
+		///		Equality operator for <see cref="ObjectBase"/>
+		/// </summary>
+		/// <param name="objectBase1">Left</param>
+		/// <param name="objectBase2">Right</param>
 		public static bool operator !=(ObjectBase objectBase1, ObjectBase objectBase2)
 		{
 			return !(objectBase1 == objectBase2);
 		}
 
-		protected virtual IEnumerable<PropertyInfo> GetTypeSignature()
+		/// <summary>
+		///		Returns the properties of the current type
+		/// </summary>
+		protected virtual IEnumerable<PropertyInfo> GetTypProperties()
 		{
 			return UnproxiedType.GetProperties();
 		}

@@ -70,7 +70,7 @@ namespace SharpFu.Domain.Model
 			return _cachedHashCode.Value;
 		}
 
-		protected override IEnumerable<PropertyInfo> GetTypeSignature()
+		protected override IEnumerable<PropertyInfo> GetTypProperties()
 		{
 			return GetType().GetProperties().Where(
 				x => x.HasAttribute<DomainSignatureAttribute>());
