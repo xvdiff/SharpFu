@@ -65,7 +65,7 @@ namespace SharpFu.Caching
 
 		protected override void Dispose(bool disposing)
 		{
-
+			// do nothing
 		}
 	}
 }

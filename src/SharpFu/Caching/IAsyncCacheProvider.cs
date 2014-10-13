@@ -8,32 +8,35 @@ using System.Threading.Tasks;
 namespace SharpFu.Caching
 {
 	/// <summary>
-	///     Denotes several asynchronous
-	///     calls for cache providers
+	///     Asynchronous interface methods
+	///		for cache providers
+	/// 
+	///		<seealso cref="ICacheProvider"/>
 	/// </summary>
 	public interface IAsyncCacheProvider : ICacheProvider
 	{
 		/// <summary>
-		///     Asynchronously retrieves an cached item from
-		///     the underlying store
+		///		Asynchronously retrieves a stored
+		///		item from the cache provider
 		/// </summary>
-		/// <typeparam name="T">Type of the cached item</typeparam>
+		/// <typeparam name="T">Arbitary item type</typeparam>
 		/// <param name="key">Cache item key</param>
+		/// <returns>Task result containing the retrieved item</returns>
 		Task<T> GetAsync<T>(string key);
 
 		/// <summary>
-		///     Asynchronously pushes an object
-		///     to the underlying store
+		///     Asynchronously pushes an item
+		///     to the cache provider
 		/// </summary>
-		/// <typeparam name="T">Type of the object to cache</typeparam>
+		/// <typeparam name="T">Arbitary item type</typeparam>
 		/// <param name="key">Cache item key</param>
-		/// <param name="value">Object to cache</param>
+		/// <param name="value">Item to cache</param>
 		/// <param name="lifespan">Desired lifespan of the item</param>
 		Task PushAsync<T>(string key, T value, TimeSpan? lifespan = null);
 
 		/// <summary>
 		///     Asynchronously removes an item
-		///     from the underlying store
+		///     from the cache provider
 		/// </summary>
 		/// <param name="key">Cache item key</param>
 		Task ClearAsync(string key);

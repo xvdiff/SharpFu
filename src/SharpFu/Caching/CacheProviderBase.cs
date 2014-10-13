@@ -14,6 +14,11 @@ namespace SharpFu.Caching
 	{
 		protected static readonly object SyncRoot = new object();
 
+		~CacheProviderBase()
+		{
+			Dispose(false);
+		}
+
 		public void Dispose()
 		{
 			Dispose(true);
@@ -25,16 +30,13 @@ namespace SharpFu.Caching
 			Guard.AgainstNullOrEmpty(key);
 
 			value = default(T);
-			try
-			{
+			try {
 				if (!Exists(key))
 					return false;
 
 				value = GetValue<T>(key);
 				return true;
-			}
-			catch
-			{
+			} catch {
 				return false;
 			}
 		}
