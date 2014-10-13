@@ -7,26 +7,41 @@ using System.Threading.Tasks;
 
 namespace SharpFu.Core.Internal
 {
+
+	/// <summary>
+	///		A faster alternative to <see cref="Activator.CreateInstance{T}"/>
+	///		which caches the activation results in order to speed up the
+	///		activation process when it is required to be called many times
+	/// </summary>
 	public static class FastActivator
 	{
-		private static readonly Dictionary<Type, Func<object>> factoryCache = new Dictionary<Type, Func<object>>();
 
+		private static readonly Dictionary<Type, Func<object>> FactoryCache = new Dictionary<Type, Func<object>>();
+
+		/// <summary>
+		///		Creates a new instance of a desired type
+		/// </summary>
+		/// <typeparam name="T">Arbitary type</typeparam>
 		public static T Create<T>()
 		{
-			return TypeFactory<T>.Create();
+			return TypeFactory<T>.CreateFunc.Invoke();
 		}
 
+		/// <summary>
+		///		Creates a new instance of a desired type
+		/// </summary>
+		/// <param name="type">Arbitary type</param>
 		public static object Create(Type type)
 		{
 			Func<object> f;
 
-			if (factoryCache.TryGetValue(type, out f)) 
+			if (FactoryCache.TryGetValue(type, out f)) 
 				return f();
 
-			lock (factoryCache)
-				if (!factoryCache.TryGetValue(type, out f))
+			lock (FactoryCache)
+				if (!FactoryCache.TryGetValue(type, out f))
 				{
-					factoryCache[type] = f = Expression.Lambda<Func<object>>(Expression.New(type)).Compile();
+					FactoryCache[type] = f = Expression.Lambda<Func<object>>(Expression.New(type)).Compile();
 				}
 
 			return f();
@@ -34,8 +49,8 @@ namespace SharpFu.Core.Internal
 
 		private static class TypeFactory<T>
 		{
-			// ReSharper disable once MemberHidesStaticFromOuterClass
-			public static readonly Func<T> Create = Expression.Lambda<Func<T>>(Expression.New(typeof(T))).Compile();
+			public static readonly Func<T> CreateFunc 
+				= Expression.Lambda<Func<T>>(Expression.New(typeof(T))).Compile();
 		}
 	}
 }
